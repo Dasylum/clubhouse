@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    if user 
+        a(href="/log-out") Logout
+        a(href=`/create-post/${user._id}`) Create new post
+
+        if user.memberStatus
+            if user.admin
+                br
+                each post in posts  
+                    h1 #{post.title}
+                    h2 #{post.text}
+                    p #{post.time}
+                    p #{post.author}
+                    a(href=`/delete-post/${post._id}`) Delete this post
+
+            else
+                a(href=`/admin-status/${user._id}`) Become admin
+                br
+                each post in posts  
+                    h1 #{post.title}
+                    h2 #{post.text}
+                    p #{post.time}
+                    p #{post.author}        
+                    
+        else 
+            a(href=`/membership-status/${user._id}`) Become a member
+            br
+            each post in posts  
+                h1 #{post.title}
+                h2 #{post.text}
+                p #{post.time}
+
+    else    
+        a(href="/signup") Sign up
+        a(href="/login") Login
+        br
+        each post in posts  
+            h1 #{post.title}
+            h2 #{post.text}
+            p #{post.time}
+    

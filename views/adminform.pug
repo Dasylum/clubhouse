@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    form(action=`/admin-status/${user}` method='POST')
+        input(type="password" name='password' placeholder='Secret admin key')
+        input(type="submit")

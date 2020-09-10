@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    form(action=`/membership-status/${user}` method='POST')
+        input(type="password" name='password' placeholder='Secret key')
+        input(type="submit")
